@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
 interface Links {
 	href: string;
@@ -11,8 +12,7 @@ interface NavBarProps {
 }
 
 const NavBar = (props: NavBarProps) => {
-	// const pathName = useRouter().asPath;
-	const pathname = 'test'
+	const pathname = usePathname();
 	return (
 		<>
 			{props.links.map((item) => (
