@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import React, { useState } from 'react';
 import Box from '@/shared/Box/Box';
 import Button from '@/shared/Button/Button';

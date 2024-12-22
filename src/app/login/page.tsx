@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { IFormValues } from '@/shared/Input/types';
-
+import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 import Input from '@/shared/Input/Input';
@@ -58,7 +58,7 @@ const Login = () => {
 							name='username'
 							type='text'
 							id='username'
-							placeHolder='Enter email'
+							placeholder='Enter email'
 							required
 							variant='withIcon'
 						/>
@@ -73,16 +73,18 @@ const Login = () => {
 							name='password'
 							type={isPasswordVisible ? 'text' : 'password'}
 							id='password'
-							placeHolder='Enter password'
+							placeholder='Enter password'
 							required
 							variant='withIcon'
 						>
 							<div className='absolute right-3 top-3'>
 								<button type='button' onClick={handleToggle}>
-									<img
+									<Image
 										src={isPasswordVisible ? eyeOn.src : eyeOff.src}
 										className='w-4'
 										alt='Toggle visibility'
+										width={16}
+										height={16}
 									/>
 								</button>
 							</div>
@@ -97,14 +99,14 @@ const Login = () => {
 					/>
 					<p className='text-xs text-neutral-500 font-poppins font-bold'>OR</p>
 					<p className='text-sm text-neutral-500 font-poppins'>
-						Don't have an account?{' '}
+						Don&apos;t have an account?{' '}
 						<span className='text-indigo-700 font-bold cursor-pointer'>
 							Sign up
 						</span>
 					</p>
 
 					<ReCAPTCHA
-						sitekey={process.env.NEXT_PUBLIC_DB_HOST}
+						sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
 						onChange={handleCaptchaChange}
 					/>
 				</form>

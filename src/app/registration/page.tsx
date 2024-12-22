@@ -2,7 +2,7 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { IFormValues } from '@/shared/Input/types';
-
+import Image from 'next/image';
 import Input from '@/shared/Input/Input';
 import Selector from '@/shared/Selector/Selector';
 import Button from '@/shared/Button/Button';
@@ -40,10 +40,12 @@ const Registration = () => {
 					<p className='text-left text-neutral-500'>{testRole}</p>
 				</div>
 				<div className='flex min-h-fit gap-24'>
-					<img
+					<Image
 						src={displayImage(testRole)}
 						alt='A man with a laptop'
-						className='w-[451px] h-[625px] border-xl rounded-xl'
+						width={451}
+						height={625}
+						className='border-xl rounded-xl'
 					/>
 					<form
 						className='flex flex-col gap-6 w-[629px] min-h-fit'
@@ -54,7 +56,7 @@ const Registration = () => {
 							label='First Name'
 							type='text'
 							name='firstName'
-							placeHolder='Input text'
+							placeholder='Input text'
 							required
 							variant='transparent'
 							error={errors.firstName}
@@ -68,7 +70,7 @@ const Registration = () => {
 							label='Last Name'
 							type='text'
 							name='lastName'
-							placeHolder='Input text'
+							placeholder='Input text'
 							required
 							variant='transparent'
 							error={errors.lastName}
@@ -82,7 +84,7 @@ const Registration = () => {
 							label='Email'
 							type='email'
 							name='email'
-							placeHolder='Input text'
+							placeholder='Input text'
 							required
 							variant='transparent'
 							error={errors.email}

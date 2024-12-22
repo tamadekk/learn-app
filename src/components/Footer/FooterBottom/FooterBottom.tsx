@@ -1,5 +1,6 @@
-"use client"
+'use client';
 import React from 'react';
+import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -26,7 +27,7 @@ const FooterBottom = () => {
 			<div className='flex justify-center md:justify-end space-x-4'>
 				{FOOTER_SOCIAL_LINKS.map((item, index) => (
 					<a key={index} href={item.href}>
-						<img src={item.icon} alt={item.alt} />
+						<Image src={item.icon} alt={item.alt} width={24} height={24} />
 					</a>
 				))}
 			</div>

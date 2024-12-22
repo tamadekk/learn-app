@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 import Button from '@/shared/Button/Button';
 import Link from 'next/link';
@@ -24,7 +25,12 @@ export const Home = () => {
 				</div>
 
 				<div className='flex justify-center'>
-					<img src={TBSVideoPic.src} alt='Promotional video thumbnail' />
+					<Image
+						src={TBSVideoPic.src}
+						alt='Promotional video thumbnail'
+						width={900}
+						height={900}
+					/>
 				</div>
 
 				<div

@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { IFormValues } from '@/shared/Input/types';
@@ -27,7 +27,7 @@ const NewsLetter = () => {
 					register={register}
 					type='email'
 					name='email'
-					placeHolder='Input your email'
+					placeholder='Input your email'
 					icon={emailIcon}
 					required
 					variant='withIconTransparent'

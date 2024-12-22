@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-
+import Image from 'next/image';
 import Button from '@/shared/Button/Button';
 
 interface JoinUsBoxProps {
@@ -25,10 +25,13 @@ const JoinUsBox = (props: JoinUsBoxProps) => {
 					</Link>
 				</div>
 				<div className='w-1/2'>
-					<img
+					<Image
 						className='rounded-r-lg'
 						src={props.image}
 						alt='Group of people'
+						layout='responsive'
+						width={500}
+						height={500}
 					/>
 				</div>
 			</div>

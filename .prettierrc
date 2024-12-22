@@ -5,20 +5,5 @@
 	"jsxSingleQuote": true,
 	"singleQuote": true,
 	"useTabs": true,
-	"endOfLine": "auto",
-	"max-len": [
-		"error",
-		{
-			"code": 80
-		}
-	],
-	"importOrder": [
-		"^react(.*)$",
-		"<THIRD_PARTY_MODULES>",
-		"./types",
-		"^[.](?!.*.(scss|css)$).*$",
-		"(.*).(scss|css)$"
-	],
-	"importOrderSeparation": true,
-	"importOrderSortSpecifiers": true
+	"endOfLine": "auto"
 }

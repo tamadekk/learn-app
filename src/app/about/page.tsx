@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import TraineeCard from './TraineeCard';
 import { aboutUsPicture } from '@/assets';
 import { teamMembers } from '@/constants/AboutUs/constants';
@@ -19,12 +20,15 @@ const AboutUs = () => {
 						transform lives.
 					</p>
 				</div>
-
-				<img
+				<Image
 					className='shadow-m rounded-xl w-full mb-14'
 					src={aboutUsPicture.src}
 					alt='A group of people looking at laptop'
+					layout='responsive'
+					width={700}
+					height={475}
 				/>
+
 				<div className='flex flex-col gap-6 items-center md:w-full lg:flex-row lg:items-start '>
 					<div className='lg:w-64'>
 						<h2 className='text-5xl text-center text-wrap text-neutral-900 font-bold lg:text-left lg:text-nowrap'>

@@ -9,7 +9,7 @@ import {
 
 export const BOX_MOCKED_DATA = [
 	{
-		id: 1,
+		id: '1',
 		img: mockedItem,
 		tag: 'Do consectetur',
 		title: 'title',
@@ -17,7 +17,7 @@ export const BOX_MOCKED_DATA = [
 		duration: 5,
 	},
 	{
-		id: 2,
+		id: '2',
 		img: mockedItem1,
 		tag: 'Do consectetur',
 		title: 'title',
@@ -25,7 +25,7 @@ export const BOX_MOCKED_DATA = [
 		duration: 5,
 	},
 	{
-		id: 3,
+		id: '3',
 		img: mockedItem2,
 		tag: 'Do consectetur',
 		title: 'title',
@@ -33,7 +33,7 @@ export const BOX_MOCKED_DATA = [
 		duration: 5,
 	},
 	{
-		id: 4,
+		id: '4',
 		img: mockedItem3,
 		tag: 'Do consectetur',
 		title: 'title',
@@ -41,7 +41,7 @@ export const BOX_MOCKED_DATA = [
 		duration: 5,
 	},
 	{
-		id: 5,
+		id: '5',
 		img: mockedItem4,
 		tag: 'Do consectetur',
 		title: 'title',
@@ -49,7 +49,7 @@ export const BOX_MOCKED_DATA = [
 		duration: 5,
 	},
 	{
-		id: 6,
+		id: '6',
 		img: mockedItem5,
 		tag: 'Do consectetur',
 		title: 'title',

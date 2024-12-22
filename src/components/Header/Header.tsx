@@ -1,18 +1,15 @@
-"use client"
+'use client';
 import React from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
-
+import Image from 'next/image';
 import Logo from '@/shared/Logo/Logo';
 import ProfileCard from './ProfileCard/ProfileCard';
 import Button from '@/shared/Button/Button';
 import NavBar from './NavBar';
 
 import { closeIcon, hamburgerIcon } from '@/assets';
-import {
-	desktopNavLinks,
-	mobileNavLinks,
-} from '@/constants/Header/constants';
+import { desktopNavLinks, mobileNavLinks } from '@/constants/Header/constants';
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const handleClick = () => {
@@ -26,7 +23,12 @@ const Header = () => {
 					onClick={handleClick}
 					variant='icon'
 				>
-					<img src={hamburgerIcon.src} alt='Menu icon' />
+					<Image
+						src={hamburgerIcon.src}
+						alt='Menu icon'
+						width={24}
+						height={24}
+					/>
 				</Button>
 				<Logo className='sm:ml-4 sm:mr-4' />
 				<div className='hidden sm:flex sm:flex-row  sm:items-center sm:gap-5'>
@@ -47,7 +49,12 @@ const Header = () => {
 							<div className='flex flex-row gap-16'>
 								<ProfileCard />
 								<Button onClick={handleClick} variant='icon'>
-									<img src={closeIcon.src} alt='Menu icon' />
+									<Image
+										src={closeIcon.src}
+										alt='Menu icon'
+										width={24}
+										height={24}
+									/>
 								</Button>
 							</div>
 							<NavBar links={mobileNavLinks} />
