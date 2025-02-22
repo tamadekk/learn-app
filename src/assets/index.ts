@@ -26,6 +26,10 @@ import mockedItem2 from './Box/mockedItem2.jpg';
 import mockedItem3 from './Box/mockedItem3.jpg';
 import mockedItem4 from './Box/mockedItem4.jpg';
 import mockedItem5 from './Box/mockedItem5.jpg';
+import check from './pricing/check.svg';
+import xmarkIcon from './pricing/xmark.svg';
+import arrowDownward from './pricing/arrow-downward.svg';
+import arrowUpward from './pricing/arrow-upward.svg';
 
 export {
 	logo,
@@ -56,4 +60,8 @@ export {
 	mockedItem3,
 	mockedItem4,
 	mockedItem5,
+	check,
+	xmarkIcon,
+	arrowDownward,
+	arrowUpward,
 };
