@@ -5,19 +5,19 @@ import { FAQ_DATA } from '@/constants/pricing/pricing';
 
 const Pricing = () => {
 	return (
-		<div className='min-h-screen max-w-7xl mx-auto mt-[50px]'>
+		<div className='min-h-screen max-w-7xl mx-auto px-5 mt-[50px]'>
 			<div className='text-center'>
 				<h1 className='text-5xl font-bold text-neutral-900 sm:text-[56px]'>
 					Pricing
 				</h1>
-				<p className='text-lg text-neutral-500 mt-[50px] sm:text-xl'>
+				<p className='text-lg text-neutral-500 mt-[20px] sm:mt-[50px] sm:text-xl'>
 					At Learn Platform, we believe in providing high-quality education
 					that's accessible and affordable. We offer diverse pricing plans
 					designed to cater to individual learners, groups, and organizations.
 					Let's explore each option below:
 				</p>
 			</div>
-			<div className='flex flex-col justify-center items-center mt-[50px] sm:flex-row'>
+			<div className='flex flex-col gap-2 justify-center items-center mt-[50px] lg:flex-row'>
 				{PRICING_PLANS.map((item, index) => (
 					<PricingCards
 						key={index}
