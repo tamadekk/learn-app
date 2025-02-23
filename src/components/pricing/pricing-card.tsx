@@ -59,14 +59,22 @@ const PricingCard = ({
 					featured && 'bg-white h-[439px]'
 				)}
 			>
-				<h2
-					className={clsx(
-						'text-[32px] text-neutral-900 font-bold',
-						featured && 'text-primary-500'
+				<div className='flex items-center justify-between'>
+					<h2
+						className={clsx(
+							'text-[32px] text-neutral-900 font-bold',
+							featured && 'text-primary-500'
+						)}
+					>
+						{title}
+					</h2>
+					{featured && (
+						<p className='bg-secondary-500 text-xs text-white font-poppins rounded-2xl p-2'>
+							Popular
+						</p>
 					)}
-				>
-					{title}
-				</h2>
+				</div>
+
 				<p className='text-[16px] text-neutral-600'>{description}</p>
 				<p className='relative text-[40px] text-neutral-900 font-bold'>
 					${price.price}
