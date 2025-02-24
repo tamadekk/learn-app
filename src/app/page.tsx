@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import { TBSVideoPic, joinUsBGPic } from '@/assets/index';
 
-export const Home = () => {
+const Home = () => {
 	return (
 		<>
 			<div className='flex flex-col items-center mt-24 gap-14'>
