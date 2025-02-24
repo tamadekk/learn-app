@@ -40,7 +40,12 @@ const Pricing = () => {
 				</div>
 			</div>
 			{FAQ_DATA.map((faq, index) => (
-				<FAQ index={index} title={faq.title} content={faq.content} />
+				<FAQ
+					key={faq.title}
+					index={index}
+					title={faq.title}
+					content={faq.content}
+				/>
 			))}
 		</div>
 	);
