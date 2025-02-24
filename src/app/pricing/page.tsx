@@ -17,7 +17,7 @@ const Pricing = () => {
 					Let's explore each option below:
 				</p>
 			</div>
-			<div className='flex flex-col gap-2 justify-center items-center mt-[50px] lg:flex-row'>
+			<div className='flex flex-col gap-2 justify-center items-center mt-[50px] lg:flex-row lg:gap-0'>
 				{PRICING_PLANS.map((item, index) => (
 					<PricingCards
 						key={index}
