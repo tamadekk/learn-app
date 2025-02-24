@@ -1,59 +1,32 @@
-import logo from './logo.png';
-import mockedAvatar from './Header/MockedAvatar.png';
-import userIcon from './Login/userIcon.svg';
-import padlockIcon from './Login/padlockIcon.svg';
-import eyeOn from './Login/eyeIcon.svg';
-import eyeOff from './Login/eyeOffIcon.svg';
-import TBSVideoPic from './Home/TBS-Video.png';
-import joinUsBGPic from './Home/joinUsBG.png';
-import emailIcon from './Home/email.svg';
-import twitterIcon from './Footer/x-twitterIcon.svg';
-import youtubeIcon from './Footer/youtubeIcon.svg';
-import facebookIcon from './Footer/facebookIcon.svg';
-import hamburgerIcon from './Header/hamburgerIcon.svg';
-import closeIcon from './Header/closeIcon.svg';
-import peopleGroup1Img from './JoinUs/group-of-people-1.png';
-import peopleGroup2Img from './JoinUs/group-of-people-2.jpeg';
-import regTrainee from './Registration/regTrainee.jpg';
-import regStudent from './Registration/regStudent.jpeg';
-import aboutUsPicture from './AboutUs/aboutUsMain.jpg';
-import JohnDoeAvatar from './AboutUs/JohnDoeAvatar.jpg';
-import SaraRoseAvatar from './AboutUs/SaraRoseAvatar.jpg';
-import JackBlackAvatar from './AboutUs/JackBlackAvatar.jpg';
-import mockedItem from './Box/mockedItem.jpg';
-import mockedItem1 from './Box/mockedItem1.jpg';
-import mockedItem2 from './Box/mockedItem2.jpg';
-import mockedItem3 from './Box/mockedItem3.jpg';
-import mockedItem4 from './Box/mockedItem4.jpg';
-import mockedItem5 from './Box/mockedItem5.jpg';
-
-export {
-	logo,
-	mockedAvatar,
-	userIcon,
-	padlockIcon,
-	eyeOn,
-	eyeOff,
-	TBSVideoPic,
-	joinUsBGPic,
-	emailIcon,
-	twitterIcon,
-	youtubeIcon,
-	facebookIcon,
-	hamburgerIcon,
-	closeIcon,
-	peopleGroup1Img,
-	peopleGroup2Img,
-	regTrainee,
-	regStudent,
-	aboutUsPicture,
-	JohnDoeAvatar,
-	SaraRoseAvatar,
-	JackBlackAvatar,
-	mockedItem,
-	mockedItem1,
-	mockedItem2,
-	mockedItem3,
-	mockedItem4,
-	mockedItem5,
-};
+export { default as logo } from './logo.png';
+export { default as mockedAvatar } from './Header/MockedAvatar.png';
+export { default as userIcon } from './Login/userIcon.svg';
+export { default as padlockIcon } from './Login/padlockIcon.svg';
+export { default as eyeOn } from './Login/eyeIcon.svg';
+export { default as eyeOff } from './Login/eyeOffIcon.svg';
+export { default as TBSVideoPic } from './Home/TBS-Video.png';
+export { default as joinUsBGPic } from './Home/joinUsBG.png';
+export { default as emailIcon } from './Home/email.svg';
+export { default as twitterIcon } from './Footer/x-twitterIcon.svg';
+export { default as youtubeIcon } from './Footer/youtubeIcon.svg';
+export { default as facebookIcon } from './Footer/facebookIcon.svg';
+export { default as hamburgerIcon } from './Header/hamburgerIcon.svg';
+export { default as closeIcon } from './Header/closeIcon.svg';
+export { default as peopleGroup1Img } from './JoinUs/group-of-people-1.png';
+export { default as peopleGroup2Img } from './JoinUs/group-of-people-2.jpeg';
+export { default as regTrainee } from './Registration/regTrainee.jpg';
+export { default as regStudent } from './Registration/regStudent.jpeg';
+export { default as aboutUsPicture } from './AboutUs/aboutUsMain.jpg';
+export { default as JohnDoeAvatar } from './AboutUs/JohnDoeAvatar.jpg';
+export { default as SaraRoseAvatar } from './AboutUs/SaraRoseAvatar.jpg';
+export { default as JackBlackAvatar } from './AboutUs/JackBlackAvatar.jpg';
+export { default as mockedItem } from './Box/mockedItem.jpg';
+export { default as mockedItem1 } from './Box/mockedItem1.jpg';
+export { default as mockedItem2 } from './Box/mockedItem2.jpg';
+export { default as mockedItem3 } from './Box/mockedItem3.jpg';
+export { default as mockedItem4 } from './Box/mockedItem4.jpg';
+export { default as mockedItem5 } from './Box/mockedItem5.jpg';
+export { default as check } from './pricing/check.svg';
+export { default as xmarkIcon } from './pricing/xmark.svg';
+export { default as arrowDownward } from './pricing/arrow-downward.svg';
+export { default as arrowUpward } from './pricing/arrow-upward.svg';

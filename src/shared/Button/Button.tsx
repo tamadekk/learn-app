@@ -10,6 +10,9 @@ const buttonVariants = cva('text-white rounded-md disabled:opacity-40', {
 			secondaryButton:
 				'bg-tertiary3-500 hover:bg-tertiary3-600 focus:bg-tertiary3-650',
 			importantButton: 'bg-danger-500 hover:bg-danger-600 focus:bg-danger-650',
+			outline:
+				'bg-transparent text-primary-500 border border-primary-500 hover:font-medium focus:font-semibold',
+
 			icon: '',
 		},
 		size: {
