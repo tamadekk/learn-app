@@ -1,31 +1,60 @@
 'use client';
+
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { IFormValues } from '@/shared/Input/types';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
+import { auth } from '@/../firebase/clientApp';
 import Input from '@/shared/Input/Input';
 import Button from '@/shared/Button/Button';
 
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
+import { IFormValues } from '@/types';
+
+const loginSchema = z.object({
+	username: z.string().email({
+		message: 'Username must be a valid email address',
+	}),
+	password: z.string().min(6, {
+		message: 'Password must be at least 6 characters long',
+	}),
+});
 
 const Login = () => {
 	const [captchaCompleted, setCaptchaCompleted] = useState(false);
+	const [captchaWarning, setCaptchaWarning] = useState(false);
 	const [isPasswordVisible, setPasswordVisible] = useState(false);
 
+	const router = useRouter();
 	const {
 		register,
-		formState: { isSubmitting },
+		formState: { errors, isSubmitting },
 		handleSubmit,
-	} = useForm<IFormValues>();
+	} = useForm({ resolver: zodResolver(loginSchema) });
 
 	const onSubmit: SubmitHandler<IFormValues> = async (data) => {
-		if (!captchaCompleted) return;
-		await new Promise((resolve) => {
-			setTimeout(resolve, 1000);
-		});
-		alert(JSON.stringify(data));
+		if (!captchaCompleted) {
+			setCaptchaWarning(true);
+			return;
+		}
+
+		try {
+			const userCredential = await signInWithEmailAndPassword(
+				auth,
+				data.username,
+				data.password
+			);
+			const user = userCredential.user;
+			router.push('/');
+		} catch (error) {
+			//TODO add error handling
+			console.error('Error signing in:');
+		}
 	};
 
 	const handleToggle = () => {
@@ -43,7 +72,11 @@ const Login = () => {
 					Sign in
 				</p>
 				<p className='text-xl text-neutral-500 font-montserrat'>Welcome back</p>
-
+				{(errors.username || errors.password) && (
+					<p className='text-red-600 font-poppins font-semibold inline-block'>
+						You're entered either wrong username or password
+					</p>
+				)}
 				<form
 					className='flex flex-col items-center gap-4'
 					onSubmit={handleSubmit(onSubmit)}
@@ -59,7 +92,6 @@ const Login = () => {
 							type='text'
 							id='username'
 							placeholder='Enter email'
-							required
 							variant='withIcon'
 						/>
 					</div>
@@ -74,7 +106,6 @@ const Login = () => {
 							type={isPasswordVisible ? 'text' : 'password'}
 							id='password'
 							placeholder='Enter password'
-							required
 							variant='withIcon'
 						>
 							<div className='absolute right-3 top-3'>
@@ -104,7 +135,11 @@ const Login = () => {
 							Sign up
 						</span>
 					</p>
-
+					{captchaWarning && (
+						<p className='text-red-600 font-poppins font-semibold'>
+							Please complete the captcha
+						</p>
+					)}
 					<ReCAPTCHA
 						sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
 						onChange={handleCaptchaChange}
