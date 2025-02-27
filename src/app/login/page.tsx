@@ -2,28 +2,17 @@
 
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
-import { auth } from '@/../firebase/clientApp';
 import Input from '@/shared/Input/Input';
 import Button from '@/shared/Button/Button';
 
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
 import { LoginFormValues } from '@/shared/Input/types';
-
-const loginSchema = z.object({
-	username: z.string().email({
-		message: 'Username must be a valid email address',
-	}),
-	password: z.string().min(6, {
-		message: 'Password must be at least 6 characters long',
-	}),
-});
+import { loginSchema } from './validation';
+import { userLogin } from './action';
 
 const Login = () => {
 	const [captchaCompleted, setCaptchaCompleted] = useState(false);
@@ -42,18 +31,10 @@ const Login = () => {
 			setCaptchaWarning(true);
 			return;
 		}
-
-		try {
-			const userCredential = await signInWithEmailAndPassword(
-				auth,
-				data.username,
-				data.password
-			);
-			const user = userCredential.user;
+		//TODO - handle error
+		const res = await userLogin(data);
+		if (res) {
 			router.push('/');
-		} catch (error) {
-			//TODO add error handling
-			console.error('Error signing in:');
 		}
 	};
 
