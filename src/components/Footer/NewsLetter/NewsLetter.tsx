@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { IFormValues } from '@/shared/Input/types';
+import { FormValues } from '@/shared/Input/types';
 
 import { emailIcon } from '@/assets';
 
@@ -9,7 +9,7 @@ import Button from '@/shared/Button/Button';
 import Input from '@/shared/Input/Input';
 
 const NewsLetter = () => {
-	const { register } = useForm<IFormValues>();
+	const { register } = useForm<FormValues>();
 	const handleClick = () => {};
 	return (
 		<section
