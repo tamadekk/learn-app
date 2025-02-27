@@ -14,7 +14,7 @@ import Input from '@/shared/Input/Input';
 import Button from '@/shared/Button/Button';
 
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
-import { IFormValues } from '@/types';
+import { LoginFormValues } from '@/shared/Input/types';
 
 const loginSchema = z.object({
 	username: z.string().email({
@@ -35,9 +35,9 @@ const Login = () => {
 		register,
 		formState: { errors, isSubmitting },
 		handleSubmit,
-	} = useForm({ resolver: zodResolver(loginSchema) });
+	} = useForm<LoginFormValues>({ resolver: zodResolver(loginSchema) });
 
-	const onSubmit: SubmitHandler<IFormValues> = async (data) => {
+	const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
 		if (!captchaCompleted) {
 			setCaptchaWarning(true);
 			return;
@@ -85,7 +85,7 @@ const Login = () => {
 						<label className='text-sm font-semibold font-poppins'>
 							User name
 						</label>
-						<Input
+						<Input<LoginFormValues>
 							icon={userIcon}
 							register={register}
 							name='username'
@@ -99,7 +99,7 @@ const Login = () => {
 						<label className='text-sm font-semibold font-poppins'>
 							Password
 						</label>
-						<Input
+						<Input<LoginFormValues>
 							icon={padlockIcon}
 							register={register}
 							name='password'

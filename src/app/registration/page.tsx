@@ -1,15 +1,19 @@
 'use client';
 import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { IFormValues } from '@/shared/Input/types';
+import { useForm } from 'react-hook-form';
+import { RegistrationFormValues } from '@/shared/Input/types';
 import Image from 'next/image';
 import Input from '@/shared/Input/Input';
 import Selector from '@/shared/Selector/Selector';
 import Button from '@/shared/Button/Button';
-
 import { regTrainee, regStudent } from '@/assets';
 import { specializations } from '@/constants/Registration/constants';
 
+import { createUser } from './actions';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { registrationSchema } from './validation';
+
+//TODO handle role
 const testRole = 'Student';
 
 const Registration = () => {
@@ -17,14 +21,9 @@ const Registration = () => {
 		register,
 		handleSubmit,
 		formState: { errors, isSubmitting },
-	} = useForm<IFormValues>();
-
-	const onSubmit: SubmitHandler<IFormValues> = async (data) => {
-		await new Promise((resolve) => {
-			setTimeout(resolve, 1000);
-		});
-		alert(JSON.stringify(data));
-	};
+	} = useForm<RegistrationFormValues>({
+		resolver: zodResolver(registrationSchema),
+	});
 
 	const displayImage = (role: string) => {
 		return role === 'Student' ? regStudent.src : regTrainee.src;
@@ -49,9 +48,9 @@ const Registration = () => {
 					/>
 					<form
 						className='flex flex-col gap-6 w-[629px] min-h-fit'
-						onSubmit={handleSubmit(onSubmit)}
+						onSubmit={handleSubmit(createUser)}
 					>
-						<Input
+						<Input<RegistrationFormValues>
 							register={register}
 							label='First Name'
 							type='text'
@@ -60,12 +59,8 @@ const Registration = () => {
 							required
 							variant='transparent'
 							error={errors.firstName}
-							validation={{
-								minLength: 2,
-							}}
 						/>
-
-						<Input
+						<Input<RegistrationFormValues>
 							register={register}
 							label='Last Name'
 							type='text'
@@ -74,12 +69,8 @@ const Registration = () => {
 							required
 							variant='transparent'
 							error={errors.lastName}
-							validation={{
-								minLength: 2,
-							}}
 						/>
-
-						<Input
+						<Input<RegistrationFormValues>
 							register={register}
 							label='Email'
 							type='email'
@@ -88,12 +79,6 @@ const Registration = () => {
 							required
 							variant='transparent'
 							error={errors.email}
-							validation={{
-								pattern: {
-									value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-									message: 'Please enter a valid email address.',
-								},
-							}}
 						/>
 						<div>
 							<label className='text-neutral-700 text-md font-bold'>
