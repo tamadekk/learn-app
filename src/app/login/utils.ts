@@ -1,5 +1,3 @@
-'use server';
-
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/../firebase/clientApp';
 import { loginSchema } from './validation';

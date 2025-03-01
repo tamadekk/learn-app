@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Input from '@/shared/Input/Input';
@@ -12,7 +12,7 @@ import Button from '@/shared/Button/Button';
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
 import { LoginFormValues } from '@/shared/Input/types';
 import { loginSchema } from './validation';
-import { userLogin } from './action';
+import { userLogin } from './utils';
 
 const Login = () => {
 	const [captchaCompleted, setCaptchaCompleted] = useState(false);
@@ -20,6 +20,7 @@ const Login = () => {
 	const [isPasswordVisible, setPasswordVisible] = useState(false);
 
 	const router = useRouter();
+	const searchParams = useSearchParams();
 	const {
 		register,
 		formState: { errors, isSubmitting },
@@ -33,8 +34,9 @@ const Login = () => {
 		}
 		//TODO - handle error
 		const res = await userLogin(data);
+		const returnUrl = searchParams.get('returnUrl') || '/';
 		if (res) {
-			router.push('/');
+			router.push(returnUrl);
 		}
 	};
 
