@@ -1,3 +1,4 @@
+import { User } from 'firebase/auth';
 import { StaticImageData } from 'next/image';
 
 export type Blogs = {
@@ -20,4 +21,12 @@ export type IFormValues = {
 export type Links = {
 	href: string;
 	label: string;
+};
+
+export type AuthContextType = {
+	user: User | null;
+	loading: boolean;
+	error: Error | undefined;
+	logout: () => Promise<void>;
+	isAuthenticated: boolean;
 };
