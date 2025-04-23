@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Input from '@/shared/Input/Input';
@@ -12,12 +12,13 @@ import Button from '@/shared/Button/Button';
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
 import { LoginFormValues } from '@/shared/Input/types';
 import { loginSchema } from './validation';
-import { userLogin } from './utils';
+import { userLogin, LoginResult } from './utils';
 
 const Login = () => {
 	const [captchaCompleted, setCaptchaCompleted] = useState(false);
 	const [captchaWarning, setCaptchaWarning] = useState(false);
 	const [isPasswordVisible, setPasswordVisible] = useState(false);
+	const [loginError, setLoginError] = useState<string | null>(null);
 
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -32,11 +33,16 @@ const Login = () => {
 			setCaptchaWarning(true);
 			return;
 		}
-		//TODO - handle error
-		const res = await userLogin(data);
-		const returnUrl = searchParams.get('returnUrl') || '/';
-		if (res) {
+		if (!data) return;
+
+		setLoginError(null);
+		const res: LoginResult = await userLogin(data);
+
+		if (res.success) {
+			const returnUrl = searchParams.get('returnUrl') || '/';
 			router.push(returnUrl);
+		} else if (res.error) {
+			setLoginError(res.error);
 		}
 	};
 
@@ -119,9 +125,10 @@ const Login = () => {
 						</span>
 					</p>
 					{captchaWarning && (
-						<p className='text-red-600 font-poppins font-semibold'>
-							Please complete the captcha
-						</p>
+						<p className='text-sm text-red-500'>Please complete the captcha</p>
+					)}
+					{loginError && (
+						<p className='text-sm text-red-500 mt-2'>{loginError}</p>
 					)}
 					<ReCAPTCHA
 						sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
