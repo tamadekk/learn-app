@@ -64,7 +64,7 @@ const Login = () => {
 				<p className='text-xl text-neutral-500 font-montserrat'>Welcome back</p>
 				{(errors.email || errors.password) && (
 					<p className='text-red-600 font-poppins font-semibold inline-block'>
-						You're entered either wrong username or password
+						Please enter a valid username and password
 					</p>
 				)}
 				<form
