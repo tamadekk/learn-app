@@ -64,7 +64,7 @@ const Login = () => {
 				<p className='text-xl text-neutral-500 font-montserrat'>Welcome back</p>
 				{(errors.email || errors.password) && (
 					<p className='text-red-600 font-poppins font-semibold inline-block'>
-						Please enter a valid username and password
+						Please enter a valid email and password
 					</p>
 				)}
 				<form
@@ -72,9 +72,7 @@ const Login = () => {
 					onSubmit={handleSubmit(onSubmit)}
 				>
 					<div className='flex flex-col'>
-						<label className='text-sm font-semibold font-poppins'>
-							User name
-						</label>
+						<label className='text-sm font-semibold font-poppins'>Email</label>
 						<Input<LoginFormValues>
 							icon={userIcon}
 							register={register}
