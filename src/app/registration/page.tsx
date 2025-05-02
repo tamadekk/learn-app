@@ -1,30 +1,46 @@
 'use client';
-import React from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { IFormValues } from '@/shared/Input/types';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { RegistrationFormValues } from '@/shared/Input/types';
 import Image from 'next/image';
 import Input from '@/shared/Input/Input';
 import Selector from '@/shared/Selector/Selector';
 import Button from '@/shared/Button/Button';
-
 import { regTrainee, regStudent } from '@/assets';
 import { specializations } from '@/constants/Registration/constants';
 
+import { createUser } from './actions';
+type RegistrationResponse = { success: boolean; error?: string };
+import { zodResolver } from '@hookform/resolvers/zod';
+import { registrationSchema } from './validation';
+import { useRouter } from 'next/navigation';
+//TODO handle role
 const testRole = 'Student';
 
 const Registration = () => {
+	const router = useRouter();
+	const [error, setError] = useState<string | null>(null);
+	const onSubmit = async (data: RegistrationFormValues) => {
+		try {
+			setError(null);
+			const res = (await createUser(data)) as RegistrationResponse;
+			if (!res.success) {
+				setError(res.error || 'Registration failed');
+			} else {
+				router.push('/login');
+			}
+		} catch (error) {
+			setError('An unexpected error occurred during registration');
+			console.error('Error during registration:', error);
+		}
+	};
 	const {
 		register,
 		handleSubmit,
 		formState: { errors, isSubmitting },
-	} = useForm<IFormValues>();
-
-	const onSubmit: SubmitHandler<IFormValues> = async (data) => {
-		await new Promise((resolve) => {
-			setTimeout(resolve, 1000);
-		});
-		alert(JSON.stringify(data));
-	};
+	} = useForm<RegistrationFormValues>({
+		resolver: zodResolver(registrationSchema),
+	});
 
 	const displayImage = (role: string) => {
 		return role === 'Student' ? regStudent.src : regTrainee.src;
@@ -51,7 +67,12 @@ const Registration = () => {
 						className='flex flex-col gap-6 w-[629px] min-h-fit'
 						onSubmit={handleSubmit(onSubmit)}
 					>
-						<Input
+						{error && (
+							<div className='p-4 bg-red-50 border border-red-200 rounded-lg'>
+								<p className='text-red-600 font-poppins text-sm'>{error}</p>
+							</div>
+						)}
+						<Input<RegistrationFormValues>
 							register={register}
 							label='First Name'
 							type='text'
@@ -60,12 +81,8 @@ const Registration = () => {
 							required
 							variant='transparent'
 							error={errors.firstName}
-							validation={{
-								minLength: 2,
-							}}
 						/>
-
-						<Input
+						<Input<RegistrationFormValues>
 							register={register}
 							label='Last Name'
 							type='text'
@@ -74,12 +91,8 @@ const Registration = () => {
 							required
 							variant='transparent'
 							error={errors.lastName}
-							validation={{
-								minLength: 2,
-							}}
 						/>
-
-						<Input
+						<Input<RegistrationFormValues>
 							register={register}
 							label='Email'
 							type='email'
@@ -88,12 +101,16 @@ const Registration = () => {
 							required
 							variant='transparent'
 							error={errors.email}
-							validation={{
-								pattern: {
-									value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-									message: 'Please enter a valid email address.',
-								},
-							}}
+						/>
+						<Input<RegistrationFormValues>
+							register={register}
+							label='Password'
+							type='password'
+							name='password'
+							placeholder='Input text'
+							required
+							variant='transparent'
+							error={errors.password}
 						/>
 						<div>
 							<label className='text-neutral-700 text-md font-bold'>

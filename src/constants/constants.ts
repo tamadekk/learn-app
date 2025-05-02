@@ -57,3 +57,7 @@ export const BOX_MOCKED_DATA = [
 		duration: 5,
 	},
 ];
+
+export const COOKIE_NAME = 'firebase-auth-token';
+export const COOKIE_MAX_AGE = 30 * 24 * 60 * 60;
+export const TOKEN_REFRESH_INTERVAL = 10 * 60 * 1000;

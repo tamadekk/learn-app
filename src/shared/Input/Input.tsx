@@ -6,7 +6,6 @@ import {
 	RegisterOptions,
 	FieldError,
 } from 'react-hook-form';
-import { IFormValues } from './types';
 import { VariantProps, cva } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
@@ -31,22 +30,28 @@ const inputVariants = cva(
 	}
 );
 
-interface InputProps
-	extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
+interface InputProps<
+	TFormValues extends Record<string, any> = Record<string, any>,
+> extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
 		VariantProps<typeof inputVariants> {
 	icon?: string;
 	type: string;
 	label?: string;
-	name: Path<IFormValues>;
+	name: Path<TFormValues>;
 	placeholder: string;
 	required?: boolean;
 	children?: React.ReactNode;
-	register: UseFormRegister<IFormValues>;
-	validation?: RegisterOptions<IFormValues>;
+	register: UseFormRegister<TFormValues>;
+	validation?: RegisterOptions<TFormValues>;
 	error?: FieldError;
 }
 
-const Input = ({ className, size, variant, ...props }: InputProps) => {
+const Input = <TFormValues extends Record<string, any> = Record<string, any>>({
+	className,
+	size,
+	variant,
+	...props
+}: InputProps<TFormValues>) => {
 	return (
 		<div className='relative flex items-center'>
 			{props.icon && (
@@ -58,7 +63,6 @@ const Input = ({ className, size, variant, ...props }: InputProps) => {
 					height={20}
 				/>
 			)}
-
 			<div className='w-full'>
 				<label
 					className={cn(

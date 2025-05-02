@@ -10,10 +10,10 @@ import {
 
 import LegalLinks from './LegalLinks/LegalLinks';
 import Selector from '@/shared/Selector/Selector';
-import { IFormValues } from '@/shared/Input/types';
+import { FormValues } from '@/shared/Input/types';
 
 const FooterBottom = () => {
-	const { register } = useForm<IFormValues>();
+	const { register } = useForm<FormValues>();
 
 	return (
 		<aside className='container mx-auto mt-10 border-t border-gray-200 pt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-center px-4 text-nowrap'>

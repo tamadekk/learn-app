@@ -1,17 +1,21 @@
 import React from 'react';
 import { UseFormRegister, Path } from 'react-hook-form';
 
-import { IFormValues } from '../Input/types';
-
-interface SelectorProps {
-	name: Path<IFormValues>;
+type SelectorProps<
+	TFormValues extends Record<string, any> = Record<string, any>,
+> = {
+	name: Path<TFormValues>;
 	className?: string;
 	value?: string;
 	required?: boolean;
 	options: string[];
-	register: UseFormRegister<IFormValues>;
-}
-const Selector = (props: SelectorProps) => {
+	register: UseFormRegister<TFormValues>;
+};
+const Selector = <
+	TFormValues extends Record<string, any> = Record<string, any>,
+>(
+	props: SelectorProps<TFormValues>
+) => {
 	return (
 		<select
 			{...props.register(props.name)}
