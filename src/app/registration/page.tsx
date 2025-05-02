@@ -80,6 +80,16 @@ const Registration = () => {
 							variant='transparent'
 							error={errors.email}
 						/>
+						<Input<RegistrationFormValues>
+							register={register}
+							label='Password'
+							type='password'
+							name='password'
+							placeholder='Input text'
+							required
+							variant='transparent'
+							error={errors.password}
+						/>
 						<div>
 							<label className='text-neutral-700 text-md font-bold'>
 								Specialization

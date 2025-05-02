@@ -16,13 +16,12 @@ export const createUser: SubmitHandler<RegistrationFormValues> = async (
 			console.log(validationResult.error);
 			return;
 		}
-		const { firstName, lastName, email, specialization } =
+		const { firstName, lastName, email, specialization, password } =
 			validationResult.data;
-		//TODO handle password
 		const userCredential = await createUserWithEmailAndPassword(
 			auth,
 			email,
-			'data.password'
+			password
 		);
 		const uid = userCredential.user.uid;
 		const userProfile = {

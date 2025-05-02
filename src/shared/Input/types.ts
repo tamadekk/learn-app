@@ -8,6 +8,7 @@ export type RegistrationFormValues = {
 	lastName: string;
 	email: string;
 	specialization: string;
+	password: string;
 };
 
 export type FormValues =

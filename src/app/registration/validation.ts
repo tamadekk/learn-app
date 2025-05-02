@@ -13,4 +13,7 @@ export const registrationSchema = z.object({
 	specialization: z.string().nonempty({
 		message: 'Specialization must not be empty',
 	}),
+	password: z.string().min(6, {
+		message: 'Password must be at least 6 characters long',
+	}),
 });
