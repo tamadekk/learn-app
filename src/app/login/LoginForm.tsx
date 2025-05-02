@@ -61,7 +61,7 @@ const Login = () => {
 					Sign in
 				</p>
 				<p className='text-xl text-neutral-500 font-montserrat'>Welcome back</p>
-				{(errors.username || errors.password) && (
+				{(errors.email || errors.password) && (
 					<p className='text-red-600 font-poppins font-semibold inline-block'>
 						You're entered either wrong username or password
 					</p>
@@ -77,9 +77,9 @@ const Login = () => {
 						<Input<LoginFormValues>
 							icon={userIcon}
 							register={register}
-							name='username'
+							name='email'
 							type='text'
-							id='username'
+							id='email'
 							placeholder='Enter email'
 							variant='withIcon'
 						/>

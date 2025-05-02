@@ -22,8 +22,8 @@ export const userLogin: SubmitHandler<LoginFormValues> = async (
 			};
 		}
 
-		const { username, password } = validationResult.data;
-		await signInWithEmailAndPassword(auth, username, password);
+		const { email, password } = validationResult.data;
+		await signInWithEmailAndPassword(auth, email, password);
 		return {
 			success: true,
 		};
