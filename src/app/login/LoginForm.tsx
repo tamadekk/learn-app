@@ -36,7 +36,7 @@ const Login = () => {
 		if (!data) return;
 
 		setLoginError(null);
-		const res: LoginResult = await userLogin(data);
+		const res = (await userLogin(data)) as LoginResult;
 
 		if (res.success) {
 			const returnUrl = searchParams.get('returnUrl') || '/';
