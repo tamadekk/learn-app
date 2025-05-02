@@ -1,7 +1,7 @@
 'use server';
 import { SubmitHandler } from 'react-hook-form';
 import { FirebaseError } from 'firebase/app';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '../../../firebase/clientApp';
 import { doc, setDoc } from 'firebase/firestore';
 
@@ -30,6 +30,9 @@ export const createUser: SubmitHandler<RegistrationFormValues> = async (
 			role: 'student',
 		};
 		await setDoc(doc(db, 'users', uid), userProfile);
+		await updateProfile(res.user, {
+			displayName: firstName,
+		});
 		return { success: true };
 	} catch (error) {
 		if (error instanceof FirebaseError) {
