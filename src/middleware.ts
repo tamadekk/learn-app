@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { COOKIE_NAME } from '@/constants/constants';
 
 const publicPaths = [
 	'/',
@@ -29,7 +30,7 @@ export async function middleware(request: NextRequest) {
 		return NextResponse.next();
 	}
 
-	const authCookie = request.cookies.get('firebase-auth-token')?.value;
+	const authCookie = request.cookies.get(COOKIE_NAME)?.value;
 
 	if (!authCookie) {
 		const redirectTo = encodeURIComponent(pathname);
