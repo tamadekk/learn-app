@@ -13,6 +13,7 @@ import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
 import { LoginFormValues } from '@/shared/Input/types';
 import { loginSchema } from './validation';
 import { userLogin, LoginResult } from './utils';
+import Link from 'next/link';
 
 const Login = () => {
 	const [captchaCompleted, setCaptchaCompleted] = useState(false);
@@ -118,12 +119,14 @@ const Login = () => {
 						variant='primeButton'
 					/>
 					<p className='text-xs text-neutral-500 font-poppins font-bold'>OR</p>
-					<p className='text-sm text-neutral-500 font-poppins'>
-						Don&apos;t have an account?{' '}
-						<span className='text-indigo-700 font-bold cursor-pointer'>
-							Sign up
-						</span>
-					</p>
+					<Link href='/join-us'>
+						<p className='text-sm text-neutral-500 font-poppins'>
+							Don&apos;t have an account?{' '}
+							<span className='text-indigo-700 font-bold cursor-pointer'>
+								Sign up
+							</span>
+						</p>
+					</Link>
 					{captchaWarning && (
 						<p className='text-sm text-red-500'>Please complete the captcha</p>
 					)}
