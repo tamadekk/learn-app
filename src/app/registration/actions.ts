@@ -1,5 +1,6 @@
 'use server';
 import { SubmitHandler } from 'react-hook-form';
+import { FirebaseError } from 'firebase/app';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../../../firebase/clientApp';
 import { doc, setDoc } from 'firebase/firestore';
@@ -14,16 +15,12 @@ export const createUser: SubmitHandler<RegistrationFormValues> = async (
 		const validationResult = registrationSchema.safeParse(data);
 		if (!validationResult.success) {
 			console.log(validationResult.error);
-			return;
+			return { success: false, error: validationResult.error.message };
 		}
 		const { firstName, lastName, email, specialization, password } =
 			validationResult.data;
-		const userCredential = await createUserWithEmailAndPassword(
-			auth,
-			email,
-			password
-		);
-		const uid = userCredential.user.uid;
+		const res = await createUserWithEmailAndPassword(auth, email, password);
+		const uid = res.user.uid;
 		const userProfile = {
 			uid,
 			firstName: firstName,
@@ -33,8 +30,30 @@ export const createUser: SubmitHandler<RegistrationFormValues> = async (
 			role: 'student',
 		};
 		await setDoc(doc(db, 'users', uid), userProfile);
-	} catch (e) {
-		//TODO handle error
-		console.error('An error occured', e);
+		return { success: true };
+	} catch (error) {
+		if (error instanceof FirebaseError) {
+			switch (error.code) {
+				case 'auth/email-already-in-use':
+					return { success: false, error: 'Email is already registered' };
+				case 'auth/invalid-email':
+					return { success: false, error: 'Invalid email format' };
+				case 'auth/operation-not-allowed':
+					return {
+						success: false,
+						error: 'Email/password accounts are not enabled',
+					};
+				case 'auth/weak-password':
+					return { success: false, error: 'Password is too weak' };
+				default:
+					console.error('Firebase error:', error.code, error.message);
+					return {
+						success: false,
+						error: 'An error occurred during registration',
+					};
+			}
+		}
+		console.error('Unknown error:', error);
+		return { success: false, error: 'An unexpected error occurred' };
 	}
 };

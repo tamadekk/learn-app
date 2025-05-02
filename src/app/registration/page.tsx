@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RegistrationFormValues } from '@/shared/Input/types';
 import Image from 'next/image';
@@ -10,13 +10,30 @@ import { regTrainee, regStudent } from '@/assets';
 import { specializations } from '@/constants/Registration/constants';
 
 import { createUser } from './actions';
+type RegistrationResponse = { success: boolean; error?: string };
 import { zodResolver } from '@hookform/resolvers/zod';
 import { registrationSchema } from './validation';
-
+import { useRouter } from 'next/navigation';
 //TODO handle role
 const testRole = 'Student';
 
 const Registration = () => {
+	const router = useRouter();
+	const [error, setError] = useState<string | null>(null);
+	const onSubmit = async (data: RegistrationFormValues) => {
+		try {
+			setError(null);
+			const res = (await createUser(data)) as RegistrationResponse;
+			if (!res.success) {
+				setError(res.error || 'Registration failed');
+			} else {
+				router.push('/login');
+			}
+		} catch (error) {
+			setError('An unexpected error occurred during registration');
+			console.error('Error during registration:', error);
+		}
+	};
 	const {
 		register,
 		handleSubmit,
@@ -48,8 +65,13 @@ const Registration = () => {
 					/>
 					<form
 						className='flex flex-col gap-6 w-[629px] min-h-fit'
-						onSubmit={handleSubmit(createUser)}
+						onSubmit={handleSubmit(onSubmit)}
 					>
+						{error && (
+							<div className='p-4 bg-red-50 border border-red-200 rounded-lg'>
+								<p className='text-red-600 font-poppins text-sm'>{error}</p>
+							</div>
+						)}
 						<Input<RegistrationFormValues>
 							register={register}
 							label='First Name'
