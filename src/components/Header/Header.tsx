@@ -13,7 +13,6 @@ import { desktopNavLinks, mobileNavLinks } from '@/constants/Header/constants';
 import { useIsAuthenticated } from '@/context/AuthContext';
 import { useAuth } from '@/context/AuthContext';
 const Header = () => {
-	const { logout } = useAuth();
 	const { isAuthenticated, loading } = useIsAuthenticated();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const handleClick = () => {
@@ -42,7 +41,6 @@ const Header = () => {
 					{!loading && isAuthenticated ? (
 						<>
 							<ProfileCard />
-							<Button onClick={logout} message='Logout' />
 						</>
 					) : (
 						<>
@@ -63,7 +61,6 @@ const Header = () => {
 								{!loading && isAuthenticated ? (
 									<>
 										<ProfileCard />
-										<Button onClick={logout} message='Logout' />
 									</>
 								) : (
 									<>
