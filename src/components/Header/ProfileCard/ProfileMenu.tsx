@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { mockedAvatar } from '@/assets';
+import { mockedAvatar, xmarkIcon } from '@/assets';
 import Button from '@/shared/Button/Button';
 import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
@@ -32,7 +32,7 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({ user, onClose }) => {
 				className='cursor-pointer absolute top-2 right-2'
 				aria-label='Close menu'
 			>
-				x
+				<Image src={xmarkIcon.src} alt='Close' width={24} height={24} />
 			</button>
 			<div className='flex gap-4 p-4 items-center border-b-2 border-neutral-200'>
 				<Image
