@@ -10,7 +10,10 @@ import NavBar from './NavBar';
 
 import { closeIcon, hamburgerIcon } from '@/assets';
 import { desktopNavLinks, mobileNavLinks } from '@/constants/Header/constants';
+import { useIsAuthenticated } from '@/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 const Header = () => {
+	const { isAuthenticated, loading } = useIsAuthenticated();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const handleClick = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -35,19 +38,40 @@ const Header = () => {
 					<NavBar links={desktopNavLinks} />
 				</div>
 				<div className='hidden sm:flex sm:items-center sm:absolute right-4 space-x-4'>
-					<a className='text-primary-500' href='/login'>
-						Sign in
-					</a>
-					<Link href='/join-us'>
-						<Button message='Join us' />
-					</Link>
+					{!loading && isAuthenticated ? (
+						<>
+							<ProfileCard />
+						</>
+					) : (
+						<>
+							<a className='text-primary-500' href='/login'>
+								Sign in
+							</a>
+							<Link href='/join-us'>
+								<Button message='Join us' />
+							</Link>
+						</>
+					)}
 				</div>
 
 				{isMenuOpen && (
 					<div className='absolute top-0 left-0 pl-4 pt-4 max-w-3/5 h-dvh border-r border-b bg-white sm:hidden'>
 						<div className='flex flex-col gap-4'>
 							<div className='flex flex-row gap-16'>
-								<ProfileCard />
+								{!loading && isAuthenticated ? (
+									<>
+										<ProfileCard />
+									</>
+								) : (
+									<>
+										<a className='text-primary-500' href='/login'>
+											Sign in
+										</a>
+										<Link href='/join-us'>
+											<Button message='Join us' />
+										</Link>
+									</>
+								)}
 								<Button onClick={handleClick} variant='icon'>
 									<Image
 										src={closeIcon.src}

@@ -1,5 +1,6 @@
 import { User } from 'firebase/auth';
 import { StaticImageData } from 'next/image';
+import { circleUser, moon } from '@/assets';
 
 export type Blogs = {
 	id: string;
@@ -30,3 +31,30 @@ export type AuthContextType = {
 	logout: () => Promise<void>;
 	isAuthenticated: boolean;
 };
+
+export interface ProfileMenuProps {
+	user: User | null;
+	onClose: () => void;
+}
+
+export interface MenuItem {
+	id: string;
+	label: string;
+	src: string;
+	action: () => void;
+}
+
+export const menuItems: MenuItem[] = [
+	{
+		id: 'account',
+		src: circleUser,
+		label: 'My Account',
+		action: () => console.log('Navigate to account'),
+	},
+	{
+		id: 'night-mode',
+		src: moon,
+		label: 'Night mode',
+		action: () => console.log('Toggle night mode'),
+	},
+];

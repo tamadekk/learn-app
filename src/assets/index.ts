@@ -30,3 +30,5 @@ export { default as check } from './pricing/check.svg';
 export { default as xmarkIcon } from './pricing/xmark.svg';
 export { default as arrowDownward } from './pricing/arrow-downward.svg';
 export { default as arrowUpward } from './pricing/arrow-upward.svg';
+export { default as circleUser } from './Header/circle-user.svg';
+export { default as moon } from './Header/moon.svg';

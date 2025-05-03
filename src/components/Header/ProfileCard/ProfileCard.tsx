@@ -1,21 +1,35 @@
 import React from 'react';
 import Image from 'next/image';
 import { mockedAvatar } from '@/assets';
+import { useAuth } from '@/context/AuthContext';
+import ProfileMenu from '@/components/Header/ProfileCard/ProfileMenu';
+import { useState } from 'react';
 
 const ProfileCard = () => {
-	return (
-		<div className='flex flex-row gap-4'>
+	const { user } = useAuth();
+	const [showMenu, setShowMenu] = useState<boolean>(false);
+
+	const toggleMenu = () => setShowMenu((prev) => !prev);
+
+	return showMenu ? (
+		<ProfileMenu user={user} onClose={toggleMenu} />
+	) : (
+		<div className='flex flex-row gap-4 items-center relative'>
+			<div>
+				<p className='font-bold'>{user?.displayName || null}</p>
+			</div>
 			<Image
-				src={mockedAvatar.src}
+				src={user?.photoURL || mockedAvatar.src}
+				onClick={toggleMenu}
 				alt='Profile Picture'
 				width={50}
 				height={50}
+				className='cursor-pointer'
+				role='button'
+				tabIndex={0}
+				aria-expanded={showMenu}
+				aria-label='Toggle profile menu'
 			/>
-
-			<div>
-				<p className='font-bold'>John_12</p>
-				<p className='text-neutral-500 font-normal'>John_12@gmail.com</p>
-			</div>
 		</div>
 	);
 };
