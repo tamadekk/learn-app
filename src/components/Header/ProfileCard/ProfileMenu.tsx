@@ -50,7 +50,7 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({ user, onClose }) => {
 			</div>
 			<nav className='flex flex-col gap-2 p-2 border-b-2 border-neutral-200 pb-32'>
 				{menuItems.map((item) => (
-					<div
+					<button
 						key={item.id}
 						className='text-left flex items-center gap-2 py-2 px-3 rounded-md hover:bg-neutral-100 hover:text-primary-500 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500'
 						onClick={item.action}
@@ -59,7 +59,7 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({ user, onClose }) => {
 					>
 						<Image src={item.src} alt={item.label} width={24} height={24} />
 						{item.label}
-					</div>
+					</button>
 				))}
 			</nav>
 			<div className='flex gap-4 p-2 items-center'>
