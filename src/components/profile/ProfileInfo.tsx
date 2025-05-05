@@ -21,20 +21,22 @@ const ProfileInfo = ({ user }: ProfileInfoProps) => {
 	if (!user) return null;
 
 	return (
-		<div>
-			<p className='text-3xl text-neutral-900 font-bold sm:text-[48px]'>
-				My profile
-			</p>
-			<div>
+		<div className='flex flex-col gap-4'>
+			<p className='text-xl text-neutral-900 sm:text-[48px]'>My profile</p>
+			<div className='flex gap-4'>
 				<Image
 					src={user.photoURL || mockedAvatar}
 					alt='profile'
 					width={100}
 					height={100}
+					className='rounded-full'
 				/>
-				<p className='text-lg text-neutral-500 mt-[20px] sm:text-xl'>
-					Status: {user.status || 'Active'}
-				</p>
+				<ul className='text-lg text-neutral-500 mt-[20px] sm:text-xl'>
+					<li className='flex flex-col'>
+						<span>Status</span>
+						<span className='text-green-500'>{user.status || 'Active'}</span>
+					</li>
+				</ul>
 			</div>
 			<ul className='flex flex-col gap-4'>
 				{PROFILE_FIELDS.map((field) => (
@@ -45,8 +47,10 @@ const ProfileInfo = ({ user }: ProfileInfoProps) => {
 					/>
 				))}
 			</ul>
-			<Button message='Edit profile' />
-			<Button message='Change password' variant='secondaryButton' />
+			<div className='flex gap-2'>
+				<Button message='Edit profile' />
+				<Button message='Change password' variant='secondaryButton' />
+			</div>
 		</div>
 	);
 };

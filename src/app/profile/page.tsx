@@ -56,7 +56,7 @@ const Profile = () => {
 			<h1 className='text-5xl text-center text-neutral-900 font-bold sm:text-[56px]'>
 				My Account
 			</h1>
-			<div className='flex flex-col gap-2 justify-center items-center mt-[50px] lg:flex-row lg:gap-0'>
+			<div className='flex gap-32 justify-start items-center mt-[50px]'>
 				<ProfileInfo user={user} />
 			</div>
 		</div>
