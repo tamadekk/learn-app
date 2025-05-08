@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { useGetUID } from '@/context/AuthContext';
 import { UserProfile } from '@/types/user';
 import ProfileInfo from '@/components/profile/ProfileInfo';
-
+import Trainers from '@/components/profile/trainers';
 const Profile = () => {
 	const [user, setUser] = useState<UserProfile | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -58,6 +58,7 @@ const Profile = () => {
 			</h1>
 			<div className='flex gap-32 justify-start items-center mt-[50px]'>
 				<ProfileInfo user={user} />
+				<Trainers />
 			</div>
 		</div>
 	);
