@@ -10,11 +10,13 @@ interface ProfileInfoProps {
 }
 
 const ProfileInfo = ({ user }: ProfileInfoProps) => {
-	if (!user) return null;
+	if (!user) return <div>Error: User not found</div>;
 
 	return (
 		<div className='flex flex-col gap-4 sm:gap-6'>
-			<p className='text-2xl text-neutral-900 sm:text-3xl md:text-[48px]'>My profile</p>
+			<p className='text-2xl text-neutral-900 sm:text-3xl md:text-[48px]'>
+				My profile
+			</p>
 			<div className='flex flex-wrap items-start gap-4 sm:gap-6'>
 				<Image
 					src={user.photoURL || mockedAvatar}
