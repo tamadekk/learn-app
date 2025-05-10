@@ -37,26 +37,26 @@ const Profile = () => {
 
 	if (isLoading) {
 		return (
-			<div className='min-h-screen max-w-7xl mx-auto px-5 mt-[50px] flex justify-center items-center'>
-				<p className='text-xl'>Loading profile...</p>
+			<div className='min-h-screen max-w-7xl mx-auto px-4 sm:px-5 mt-8 sm:mt-[50px] flex justify-center items-center'>
+				<p className='text-lg sm:text-xl'>Loading profile...</p>
 			</div>
 		);
 	}
 
 	if (error) {
 		return (
-			<div className='min-h-screen max-w-7xl mx-auto px-5 mt-[50px] flex justify-center items-center'>
-				<p className='text-xl text-red-500'>{error}</p>
+			<div className='min-h-screen max-w-7xl mx-auto px-4 sm:px-5 mt-8 sm:mt-[50px] flex justify-center items-center'>
+				<p className='text-lg sm:text-xl text-red-500'>{error}</p>
 			</div>
 		);
 	}
 
 	return (
-		<div className='min-h-screen max-w-7xl mx-auto px-5 mt-[50px]'>
-			<h1 className='text-5xl text-center text-neutral-900 font-bold sm:text-[56px]'>
+		<div className='min-h-screen max-w-7xl mx-auto px-4 sm:px-5 mt-8 sm:mt-[50px]'>
+			<h1 className='text-4xl sm:text-5xl text-center text-neutral-900 font-bold md:text-[56px]'>
 				My Account
 			</h1>
-			<div className='flex gap-32 mt-[50px]'>
+			<div className='grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-8 sm:mt-[50px]'>
 				<ProfileInfo user={user} />
 				<Trainers />
 			</div>
