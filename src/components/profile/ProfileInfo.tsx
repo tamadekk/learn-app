@@ -44,6 +44,7 @@ const ProfileInfo = ({ user }: ProfileInfoProps) => {
 			<div className='flex flex-wrap gap-2 sm:gap-3 mt-2 sm:mt-4'>
 				<Button message='Edit profile' />
 				<Button message='Change password' variant='secondaryButton' />
+				<Button message='Delete profile' variant='importantButton' />
 			</div>
 		</div>
 	);
