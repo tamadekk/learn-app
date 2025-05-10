@@ -1,17 +1,9 @@
 import Image from 'next/image';
 import { mockedAvatar } from '@/assets';
-import { UserProfile, ProfileField as ProfileFieldType } from '@/types/user';
+import { UserProfile } from '@/types/user';
 import ProfileFieldComponent from './ProfileField';
 import Button from '@/shared/Button/Button';
-
-const PROFILE_FIELDS: ProfileFieldType[] = [
-	{ label: 'First name', key: 'firstName' },
-	{ label: 'Last name', key: 'lastName' },
-	{ label: 'Username', key: 'firstName' },
-	{ label: 'Specialization', key: 'specialization' },
-	{ label: 'Address', key: 'address' },
-	{ label: 'Email', key: 'email' },
-];
+import { PROFILE_FIELDS } from '@/constants/profile';
 
 interface ProfileInfoProps {
 	user: UserProfile | null;

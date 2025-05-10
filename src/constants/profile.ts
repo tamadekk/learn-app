@@ -1,0 +1,10 @@
+import { ProfileField } from '@/types/user';
+
+export const PROFILE_FIELDS: ProfileField[] = [
+	{ label: 'First name', key: 'firstName' },
+	{ label: 'Last name', key: 'lastName' },
+	{ label: 'Username', key: 'firstName' },
+	{ label: 'Specialization', key: 'specialization' },
+	{ label: 'Address', key: 'address' },
+	{ label: 'Email', key: 'email' },
+];
