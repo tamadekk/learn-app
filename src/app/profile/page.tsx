@@ -6,6 +6,7 @@ import { useGetUID } from '@/context/AuthContext';
 import { UserProfile } from '@/types/user';
 import ProfileInfo from '@/components/profile/ProfileInfo';
 import Trainers from '@/components/profile/trainers';
+import Trainings from '@/components/profile/trainings';
 const Profile = () => {
 	const [user, setUser] = useState<UserProfile | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +53,7 @@ const Profile = () => {
 	}
 
 	return (
-		<div className='min-h-screen max-w-7xl mx-auto px-4 sm:px-5 mt-8 sm:mt-[50px]'>
+		<div className='min-h-screen max-w-7xl mx-auto px-4 sm:px-5 mt-8 sm:mt-[50px] mb-8 sm:mb-[50px]'>
 			<h1 className='text-4xl sm:text-5xl text-center text-neutral-900 font-bold md:text-[56px]'>
 				My Account
 			</h1>
@@ -60,6 +61,7 @@ const Profile = () => {
 				<ProfileInfo user={user} />
 				<Trainers />
 			</div>
+			<Trainings />
 		</div>
 	);
 };
