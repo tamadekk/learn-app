@@ -34,20 +34,30 @@ const data = [
 	},
 ];
 const customStyles = {
+	tableWrapper: {
+		style: {
+			border: '1px solid #EAEAEA',
+			borderRadius: '6px',
+			overflow: 'hidden',
+		},
+	},
 	rows: {
 		style: {
-			minHeight: '72px', // override the row height
+			minHeight: '72px',
+			fontWeight: 'bold',
 		},
 	},
 	headCells: {
 		style: {
-			paddingLeft: '8px', // override the cell padding for head cells
+			paddingLeft: '8px',
 			paddingRight: '8px',
+			backgroundColor: '#EAEAEA',
+			fontWeight: 'bold',
 		},
 	},
 	cells: {
 		style: {
-			paddingLeft: '8px', // override the cell padding for data cells
+			paddingLeft: '8px',
 			paddingRight: '8px',
 		},
 	},
