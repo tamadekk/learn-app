@@ -108,3 +108,8 @@ export const useIsAuthenticated = () => {
 	const { isAuthenticated, loading } = useAuth();
 	return { isAuthenticated, loading };
 };
+
+export const useGetUID = () => {
+	const { user, loading } = useAuth();
+	return { uid: user?.uid, loading };
+};
