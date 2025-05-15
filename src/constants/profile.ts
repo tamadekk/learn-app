@@ -1,4 +1,4 @@
-import { ProfileField } from '@/types/user';
+import { ProfileField } from '@/types';
 
 export const PROFILE_FIELDS: ProfileField[] = [
 	{ label: 'First name', key: 'firstName' },

@@ -3,7 +3,7 @@ import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../../firebase/clientApp';
 import { useState, useEffect } from 'react';
 import { useGetUID } from '@/context/AuthContext';
-import { UserProfile } from '@/types/user';
+import { UserProfile } from '@/types';
 import ProfileInfo from '@/components/profile/ProfileInfo';
 import Trainers from '@/components/profile/trainers';
 import Trainings from '@/components/profile/trainings';

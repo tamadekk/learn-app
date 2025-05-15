@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '../../../firebase/clientApp';
 import { doc, setDoc } from 'firebase/firestore';
 
-import { RegistrationFormValues } from '@/shared/Input/types';
+import { RegistrationFormValues } from '@/types';
 import { registrationSchema } from './validation';
 
 export const createUser: SubmitHandler<RegistrationFormValues> = async (
