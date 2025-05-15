@@ -3,7 +3,7 @@ import { FirebaseError } from 'firebase/app';
 import { auth } from '@/../firebase/clientApp';
 import { loginSchema } from './validation';
 import { SubmitHandler } from 'react-hook-form';
-import { LoginFormValues } from '@/shared/Input/types';
+import { LoginFormValues } from '@/types';
 
 export type LoginResult = {
 	success: boolean;

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { RegistrationFormValues } from '@/shared/Input/types';
+import { RegistrationFormValues } from '@/types';
 import Image from 'next/image';
 import Input from '@/shared/Input/Input';
 import Selector from '@/shared/Selector/Selector';

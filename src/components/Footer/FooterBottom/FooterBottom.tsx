@@ -10,7 +10,7 @@ import {
 
 import LegalLinks from './LegalLinks/LegalLinks';
 import Selector from '@/shared/Selector/Selector';
-import { FormValues } from '@/shared/Input/types';
+import { FormValues } from '@/types';
 
 const FooterBottom = () => {
 	const { register } = useForm<FormValues>();

@@ -10,7 +10,7 @@ import Input from '@/shared/Input/Input';
 import Button from '@/shared/Button/Button';
 
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
-import { LoginFormValues } from '@/shared/Input/types';
+import { LoginFormValues } from '@/types';
 import { loginSchema } from './validation';
 import { userLogin, LoginResult } from './utils';
 import Link from 'next/link';

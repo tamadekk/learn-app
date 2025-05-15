@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormValues } from '@/shared/Input/types';
+import { FormValues } from '@/types';
 
 import { emailIcon } from '@/assets';
 
