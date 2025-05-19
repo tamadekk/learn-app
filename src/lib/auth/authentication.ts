@@ -5,7 +5,7 @@ import {
 } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { auth, db } from '@/../firebase/clientApp';
-import { loginSchema, registrationSchema } from './validation';
+import { loginSchema, registrationSchema } from '@/lib/auth/validation';
 import { SubmitHandler } from 'react-hook-form';
 import { LoginFormValues, RegistrationFormValues } from '@/types';
 import { setDoc, doc } from 'firebase/firestore';
