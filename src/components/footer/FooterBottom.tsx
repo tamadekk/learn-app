@@ -9,7 +9,7 @@ import {
 } from '@/constants/Footer/constants';
 
 import LegalLinks from './LegalLinks';
-import Selector from '@/shared/Selector/Selector';
+import Selector from '@/ui/Selector/Selector';
 import { FormValues } from '@/types';
 
 const FooterBottom = () => {

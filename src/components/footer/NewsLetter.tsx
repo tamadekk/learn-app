@@ -5,8 +5,8 @@ import { FormValues } from '@/types';
 
 import { emailIcon } from '@/assets';
 
-import Button from '@/shared/Button/Button';
-import Input from '@/shared/Input/Input';
+import Button from '@/ui/Button/Button';
+import Input from '@/ui/Input/Input';
 
 const NewsLetter = () => {
 	const { register } = useForm<FormValues>();

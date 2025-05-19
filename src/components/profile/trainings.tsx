@@ -1,4 +1,4 @@
-import Button from '@/shared/Button/Button';
+import Button from '@/ui/Button/Button';
 
 const Trainings = () => {
 	return (

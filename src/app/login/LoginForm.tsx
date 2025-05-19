@@ -6,8 +6,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
-import Input from '@/shared/Input/Input';
-import Button from '@/shared/Button/Button';
+import Input from '@/ui/Input/Input';
+import Button from '@/ui/Button/Button';
 
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
 import { LoginFormValues } from '@/types';

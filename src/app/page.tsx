@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-import Button from '@/shared/Button/Button';
+import Button from '@/ui/Button/Button';
 import Link from 'next/link';
 
 import { TBSVideoPic, joinUsBGPic } from '@/assets/index';

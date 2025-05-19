@@ -1,4 +1,4 @@
-import Button from '@/shared/Button/Button';
+import Button from '@/ui/Button/Button';
 import TrainersTable from './trainers-table';
 
 const Trainers = () => {
@@ -8,7 +8,9 @@ const Trainers = () => {
 				<h2 className='text-2xl font-semibold text-neutral-900 sm:text-3xl md:text-[48px]'>
 					My Trainers
 				</h2>
-				<Button className='bg-primary text-white self-start sm:self-auto'>Add Trainer</Button>
+				<Button className='bg-primary text-white self-start sm:self-auto'>
+					Add Trainer
+				</Button>
 			</div>
 
 			<div className='overflow-x-auto'>
