@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '@/shared/Logo/Logo';
-import ProfileCard from './ProfileCard/ProfileCard';
+import ProfileCard from './ProfileCard';
 import Button from '@/shared/Button/Button';
 import NavBar from './NavBar';
 
