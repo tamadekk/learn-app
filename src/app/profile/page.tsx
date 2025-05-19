@@ -2,7 +2,7 @@
 import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../../../firebase/clientApp';
 import { useState, useEffect } from 'react';
-import { useGetUID } from '@/context/AuthContext';
+import { useGetUID } from '@/context/auth-context';
 import { UserProfile } from '@/types';
 import ProfileInfo from '@/components/profile/profile-info';
 import Trainers from '@/components/profile/trainers';

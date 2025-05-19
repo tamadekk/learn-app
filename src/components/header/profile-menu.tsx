@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { mockedAvatar, xmarkIcon } from '@/assets';
 import Button from '@/components/ui/Button';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context/auth-context';
 import { useState } from 'react';
 import { ProfileMenuProps, menuItems } from '@/types';
 
