@@ -6,13 +6,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import ReCAPTCHA from 'react-google-recaptcha';
-import Input from '@/shared/Input/Input';
-import Button from '@/shared/Button/Button';
+import Input from '@/components/ui/input';
+import Button from '@/components/ui/button';
 
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
 import { LoginFormValues } from '@/types';
-import { loginSchema } from './validation';
-import { userLogin, LoginResult } from './utils';
+import { loginSchema } from '@/lib/auth/validation';
+import { userLogin, AuthResult } from '@/lib/auth/authentication';
 import Link from 'next/link';
 
 const Login = () => {
@@ -37,7 +37,7 @@ const Login = () => {
 		if (!data) return;
 
 		setLoginError(null);
-		const res = (await userLogin(data)) as LoginResult;
+		const res = await userLogin(data) as AuthResult;
 
 		if (res.success) {
 			const returnUrl = searchParams.get('returnUrl') || '/';

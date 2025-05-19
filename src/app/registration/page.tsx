@@ -3,16 +3,15 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RegistrationFormValues } from '@/types';
 import Image from 'next/image';
-import Input from '@/shared/Input/Input';
-import Selector from '@/shared/Selector/Selector';
-import Button from '@/shared/Button/Button';
+import Input from '@/components/ui/input';
+import Selector from '@/components/ui/selector';
+import Button from '@/components/ui/button';
 import { regTrainee, regStudent } from '@/assets';
 import { specializations } from '@/constants/Registration/constants';
 
-import { createUser } from './actions';
-type RegistrationResponse = { success: boolean; error?: string };
+import { createUser, AuthResult } from '@/lib/auth/authentication';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { registrationSchema } from './validation';
+import { registrationSchema } from '@/lib/auth/validation';
 import { useRouter } from 'next/navigation';
 //TODO handle role
 const testRole = 'Student';
@@ -23,7 +22,7 @@ const Registration = () => {
 	const onSubmit = async (data: RegistrationFormValues) => {
 		try {
 			setError(null);
-			const res = (await createUser(data)) as RegistrationResponse;
+			const res = await createUser(data) as AuthResult;
 			if (!res.success) {
 				setError(res.error || 'Registration failed');
 			} else {

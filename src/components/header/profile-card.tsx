@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { mockedAvatar } from '@/assets';
-import { useAuth } from '@/context/AuthContext';
-import ProfileMenu from '@/components/Header/ProfileCard/ProfileMenu';
+import { useAuth } from '@/context/auth-context';
+import ProfileMenu from '@/components/header/profile-menu';
 import { useState } from 'react';
 
 const ProfileCard = () => {

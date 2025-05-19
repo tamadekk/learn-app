@@ -3,15 +3,14 @@ import React from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '@/shared/Logo/Logo';
-import ProfileCard from './ProfileCard/ProfileCard';
-import Button from '@/shared/Button/Button';
-import NavBar from './NavBar';
+import Logo from '@/components/ui/logo';
+import ProfileCard from './profile-card';
+import Button from '@/components/ui/button';
+import NavBar from './nav-bar';
 
 import { closeIcon, hamburgerIcon } from '@/assets';
 import { desktopNavLinks, mobileNavLinks } from '@/constants/Header/constants';
-import { useIsAuthenticated } from '@/context/AuthContext';
-import { useAuth } from '@/context/AuthContext';
+import { useIsAuthenticated } from '@/context/auth-context';
 const Header = () => {
 	const { isAuthenticated, loading } = useIsAuthenticated();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);

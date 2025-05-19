@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { mockedAvatar } from '@/assets';
 import { UserProfile } from '@/types';
-import ProfileFieldComponent from './ProfileField';
-import Button from '@/shared/Button/Button';
+import ProfileFieldComponent from './profile-field';
+import Button from '@/components/ui/button';
 import { PROFILE_FIELDS } from '@/constants/profile';
 
 interface ProfileInfoProps {

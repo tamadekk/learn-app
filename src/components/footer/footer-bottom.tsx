@@ -8,8 +8,8 @@ import {
 	LANGUAGE_OPTIONS,
 } from '@/constants/Footer/constants';
 
-import LegalLinks from './LegalLinks/LegalLinks';
-import Selector from '@/shared/Selector/Selector';
+import LegalLinks from './legal-links';
+import Selector from '@/components/ui/selector';
 import { FormValues } from '@/types';
 
 const FooterBottom = () => {
