@@ -10,14 +10,15 @@ import { SubmitHandler } from 'react-hook-form';
 import { LoginFormValues, RegistrationFormValues } from '@/types';
 import { setDoc, doc } from 'firebase/firestore';
 
-export type LoginResult = {
+export type AuthResult<T = void> = {
 	success: boolean;
 	error?: string;
+	data?: T;
 };
 
 export const userLogin: SubmitHandler<LoginFormValues> = async (
 	data
-): Promise<LoginResult> => {
+): Promise<AuthResult> => {
 	try {
 		const validationResult = loginSchema.safeParse(data);
 		if (!validationResult.success) {
@@ -73,7 +74,7 @@ export const userLogin: SubmitHandler<LoginFormValues> = async (
 
 export const createUser: SubmitHandler<RegistrationFormValues> = async (
 	data
-) => {
+): Promise<AuthResult> => {
 	try {
 		const validationResult = registrationSchema.safeParse(data);
 		if (!validationResult.success) {
