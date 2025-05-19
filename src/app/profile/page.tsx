@@ -4,7 +4,7 @@ import { db } from '../../../firebase/clientApp';
 import { useState, useEffect } from 'react';
 import { useGetUID } from '@/context/AuthContext';
 import { UserProfile } from '@/types';
-import ProfileInfo from '@/components/profile/ProfileInfo';
+import ProfileInfo from '@/components/profile/profile-info';
 import Trainers from '@/components/profile/trainers';
 import Trainings from '@/components/profile/trainings';
 const Profile = () => {

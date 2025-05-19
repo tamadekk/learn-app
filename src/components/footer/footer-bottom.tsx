@@ -8,7 +8,7 @@ import {
 	LANGUAGE_OPTIONS,
 } from '@/constants/Footer/constants';
 
-import LegalLinks from './LegalLinks';
+import LegalLinks from './legal-links';
 import Selector from '@/components/ui/Selector/Selector';
 import { FormValues } from '@/types';
 

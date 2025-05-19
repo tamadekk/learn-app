@@ -4,9 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Logo from '@/components/ui/Logo/Logo';
-import ProfileCard from './ProfileCard';
+import ProfileCard from './profile-card';
 import Button from '@/components/ui/Button/Button';
-import NavBar from './NavBar';
+import NavBar from './nav-bar';
 
 import { closeIcon, hamburgerIcon } from '@/assets';
 import { desktopNavLinks, mobileNavLinks } from '@/constants/Header/constants';
