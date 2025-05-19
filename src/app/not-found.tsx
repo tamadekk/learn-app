@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 // import { magnifierWorried } from '@/assets/index';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 
 const NotFound = () => {
 	return (

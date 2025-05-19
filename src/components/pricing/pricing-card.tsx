@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { check, xmarkIcon } from '@/assets/index';
 
 import clsx from 'clsx';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/button';
 
 type PricingType = {
 	title: string;

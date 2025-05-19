@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import Box from '@/components/ui/Box';
-import Button from '@/components/ui/Button';
+import Box from '@/components/ui/box';
+import Button from '@/components/ui/button';
 
 import { BOX_MOCKED_DATA } from '@/constants/constants';
 
