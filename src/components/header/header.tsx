@@ -11,7 +11,6 @@ import NavBar from './nav-bar';
 import { closeIcon, hamburgerIcon } from '@/assets';
 import { desktopNavLinks, mobileNavLinks } from '@/constants/Header/constants';
 import { useIsAuthenticated } from '@/context/auth-context';
-import { useAuth } from '@/context/auth-context';
 const Header = () => {
 	const { isAuthenticated, loading } = useIsAuthenticated();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
