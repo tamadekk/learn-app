@@ -2,9 +2,9 @@ import React from 'react';
 
 import Logo from '@/assets/logo.png';
 
-import FooterMenuSection from './FooterMenuSection/FooterMenuSection';
-import NewsLetter from './NewsLetter/NewsLetter';
-import FooterBottom from './FooterBottom/FooterBottom';
+import FooterMenuSection from './FooterMenuSection';
+import NewsLetter from './NewsLetter';
+import FooterBottom from './FooterBottom';
 
 const Footer = () => {
 	return (
