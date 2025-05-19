@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { mockedAvatar } from '@/assets';
 import { UserProfile } from '@/types';
 import ProfileFieldComponent from './profile-field';
-import Button from '@/components/ui/Button/Button';
+import Button from '@/components/ui/Button';
 import { PROFILE_FIELDS } from '@/constants/profile';
 
 interface ProfileInfoProps {
