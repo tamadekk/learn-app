@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { RegistrationFormValues } from '@/types';
+import { RegistrationFormValues, RegistrationResponse } from '@/types';
 import Image from 'next/image';
 import Input from '@/components/ui/Input/Input';
 import Selector from '@/components/ui/Selector/Selector';
@@ -9,10 +9,9 @@ import Button from '@/components/ui/Button/Button';
 import { regTrainee, regStudent } from '@/assets';
 import { specializations } from '@/constants/Registration/constants';
 
-import { createUser } from './actions';
-type RegistrationResponse = { success: boolean; error?: string };
+import { createUser } from '@/lib/auth/authentication';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { registrationSchema } from './validation';
+import { registrationSchema } from '@/lib/auth/validation';
 import { useRouter } from 'next/navigation';
 //TODO handle role
 const testRole = 'Student';

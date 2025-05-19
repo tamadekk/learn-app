@@ -11,8 +11,8 @@ import Button from '@/components/ui/Button/Button';
 
 import { userIcon, padlockIcon, eyeOn, eyeOff } from '../../assets/index';
 import { LoginFormValues } from '@/types';
-import { loginSchema } from './validation';
-import { userLogin, LoginResult } from './utils';
+import { loginSchema } from '@/lib/auth/validation';
+import { userLogin, LoginResult } from '@/lib/auth/authentication';
 import Link from 'next/link';
 
 const Login = () => {
