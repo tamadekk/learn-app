@@ -3,9 +3,9 @@ import React from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '@/ui/Logo/Logo';
+import Logo from '@/components/ui/Logo/Logo';
 import ProfileCard from './ProfileCard';
-import Button from '@/ui/Button/Button';
+import Button from '@/components/ui/Button/Button';
 import NavBar from './NavBar';
 
 import { closeIcon, hamburgerIcon } from '@/assets';

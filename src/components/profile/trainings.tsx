@@ -1,4 +1,4 @@
-import Button from '@/ui/Button/Button';
+import Button from '@/components/ui/Button/Button';
 
 const Trainings = () => {
 	return (

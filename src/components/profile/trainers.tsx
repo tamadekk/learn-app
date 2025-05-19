@@ -1,4 +1,4 @@
-import Button from '@/ui/Button/Button';
+import Button from '@/components/ui/Button/Button';
 import TrainersTable from './trainers-table';
 
 const Trainers = () => {

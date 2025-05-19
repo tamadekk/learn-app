@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Button from '@/ui/Button/Button';
+import Button from '@/components/ui/Button/Button';
 
 interface JoinUsBoxProps {
 	role: string;

@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RegistrationFormValues } from '@/types';
 import Image from 'next/image';
-import Input from '@/ui/Input/Input';
-import Selector from '@/ui/Selector/Selector';
-import Button from '@/ui/Button/Button';
+import Input from '@/components/ui/Input/Input';
+import Selector from '@/components/ui/Selector/Selector';
+import Button from '@/components/ui/Button/Button';
 import { regTrainee, regStudent } from '@/assets';
 import { specializations } from '@/constants/Registration/constants';
 
