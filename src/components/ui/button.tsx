@@ -31,6 +31,7 @@ interface ButtonProps
 		VariantProps<typeof buttonVariants> {
 	message?: string;
 	children?: React.ReactNode;
+	type?: 'button' | 'submit' | 'reset';
 }
 
 const Button = ({ className, size, variant, ...props }: ButtonProps) => {
@@ -39,6 +40,7 @@ const Button = ({ className, size, variant, ...props }: ButtonProps) => {
 			className={cn(buttonVariants({ variant, size, className }))}
 			disabled={props.disabled}
 			onClick={props.onClick}
+			type={props.type || 'button'}
 		>
 			{props.children}
 			{props.message}
