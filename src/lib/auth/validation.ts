@@ -58,7 +58,7 @@ export const profileSchema = z.object({
 			message: 'Address must be at least 2 characters long',
 		})
 		.optional(),
-	username: z
+	displayName: z
 		.string()
 		.min(2, {
 			message: 'Username must be at least 2 characters long',
