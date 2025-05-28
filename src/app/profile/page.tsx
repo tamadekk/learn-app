@@ -38,41 +38,27 @@ const Profile = () => {
 		}
 	}, [loading, uid]);
 
-	// Handle form submission from ProfileInfo component
 	const handleFormSubmit = async (
 		formData: UserProfile,
 		imageData: string | null
 	) => {
 		setIsSubmitting(true);
 		try {
-			// Create a copy of the form data
 			const updatedProfile = { ...formData };
-
-			// Add the image if it exists
 			if (imageData) {
 				updatedProfile.photoURL = imageData;
 			}
 
 			const docRef = doc(db, 'users', uid!);
-
-			// Create a clean object with only the fields that exist in the updatedProfile
-			// This avoids issues with Firebase's updateDoc typing
 			const cleanedData: Record<string, any> = {};
-
-			// Only include fields that have values
 			Object.entries(updatedProfile).forEach(([key, value]) => {
 				if (value !== undefined && value !== null) {
 					cleanedData[key] = value;
 				}
 			});
-
-			// Update the document with the cleaned data
 			await updateDoc(docRef, cleanedData);
-
-			// Update local state
 			setUser(updatedProfile);
-
-			// Show success message
+			// TODO: add toast message
 			alert('Profile updated successfully');
 		} catch (err) {
 			console.error('Error updating user data:', err);
