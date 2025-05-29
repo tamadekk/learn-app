@@ -115,6 +115,7 @@ const Login = () => {
 						size='large'
 						disabled={isSubmitting}
 						variant='primeButton'
+						type={'submit'}
 					/>
 					<p className='text-xs text-neutral-500 font-poppins font-bold'>OR</p>
 					<Link href='/join-us'>

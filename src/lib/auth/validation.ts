@@ -26,3 +26,42 @@ export const registrationSchema = z.object({
 		message: 'Password must be at least 6 characters long',
 	}),
 });
+
+export const profileSchema = z.object({
+	firstName: z
+		.string()
+		.min(2, {
+			message: 'First name must be at least 2 characters long',
+		})
+		.optional(),
+	lastName: z
+		.string()
+		.min(2, {
+			message: 'Last name must be at least 2 characters long',
+		})
+		.optional(),
+	email: z
+		.string()
+		.email({
+			message: 'Email must be a valid email address',
+		})
+		.optional(),
+	specialization: z
+		.string()
+		.nonempty({
+			message: 'Specialization must not be empty',
+		})
+		.optional(),
+	address: z
+		.string()
+		.min(2, {
+			message: 'Address must be at least 2 characters long',
+		})
+		.optional(),
+	displayName: z
+		.string()
+		.min(2, {
+			message: 'Username must be at least 2 characters long',
+		})
+		.optional(),
+});

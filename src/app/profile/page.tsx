@@ -1,5 +1,5 @@
 'use client';
-import { getDoc, doc } from 'firebase/firestore';
+import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/clientApp';
 import { useState, useEffect } from 'react';
 import { useGetUID } from '@/context/auth-context';
@@ -7,10 +7,12 @@ import { UserProfile } from '@/types';
 import ProfileInfo from '@/components/profile/profile-info';
 import Trainers from '@/components/profile/trainers';
 import Trainings from '@/components/profile/trainings';
+
 const Profile = () => {
 	const [user, setUser] = useState<UserProfile | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const { uid, loading } = useGetUID();
 
 	useEffect(() => {
@@ -36,6 +38,37 @@ const Profile = () => {
 		}
 	}, [loading, uid]);
 
+	const handleFormSubmit = async (
+		formData: UserProfile,
+		imageData: string | null
+	) => {
+		setIsSubmitting(true);
+		try {
+			const updatedProfile = { ...formData };
+			if (imageData) {
+				updatedProfile.photoURL = imageData;
+			}
+
+			const docRef = doc(db, 'users', uid!);
+			const cleanedData: Record<string, any> = {};
+			Object.entries(updatedProfile).forEach(([key, value]) => {
+				if (value !== undefined && value !== null) {
+					cleanedData[key] = value;
+				}
+			});
+			await updateDoc(docRef, cleanedData);
+			setUser(updatedProfile);
+			// TODO: add toast message
+			alert('Profile updated successfully');
+		} catch (err) {
+			console.error('Error updating user data:', err);
+			setError('Failed to update user data');
+			alert('Failed to update profile');
+		} finally {
+			setIsSubmitting(false);
+		}
+	};
+
 	if (isLoading) {
 		return (
 			<div className='min-h-screen max-w-7xl mx-auto px-4 sm:px-5 mt-8 sm:mt-[50px] flex justify-center items-center'>
@@ -58,7 +91,11 @@ const Profile = () => {
 				My Account
 			</h1>
 			<div className='grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-8 sm:mt-[50px]'>
-				<ProfileInfo user={user} />
+				<ProfileInfo
+					user={user}
+					onSubmit={handleFormSubmit}
+					isSubmitting={isSubmitting}
+				/>
 				<Trainers />
 			</div>
 			<Trainings />
